@@ -5,9 +5,8 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Flitig on 2016-06-13.
@@ -92,7 +91,7 @@ public class SearcherTest {
         int target = 1;
 
         Searcher s = new Searcher();
-        actual = s.search( root, target, new HashSet<Integer>(), children);
+        actual = s.search(root, target, new HashSet<Integer>(), children);
 
         assertTrue(actual.getId().equals(15));
         assertTrue(actual.getParent().getId().equals(33));
@@ -112,7 +111,7 @@ public class SearcherTest {
         int target = 4;
 
         Searcher s = new Searcher();
-        actual = s.search( root, target, new HashSet<Integer>(), children);
+        actual = s.search(root, target, new HashSet<Integer>(), children);
 
         assertTrue(actual.getId().equals(34));
         assertTrue(actual.getParent().getId().equals(25));

@@ -15,8 +15,7 @@ public class Searcher implements ISearcher {
     public INode search(INode root, int targetVolume, HashSet<Integer> visitedNodes, Queue<INode> children) {
         if (root.getFirstBottle() == root.getSecondBottle()) {
             return null;
-        }
-        else {
+        } else {
             return bfs(targetVolume, root, visitedNodes, children);
         }
     }

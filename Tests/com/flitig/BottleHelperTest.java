@@ -1,11 +1,10 @@
 package com.flitig;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Flitig on 2016-06-13.

@@ -1,4 +1,5 @@
 package com.flitig;
+
 import java.util.*;
 
 import static java.lang.System.exit;
@@ -26,13 +27,15 @@ public class Main {
                 sc.close();
             }
 
+            for (String be : bottleExercise(targetVolume, firstBottle, secondBottle)) {
+                System.out.println(be);
 
-            System.out.println(bottleExercise(targetVolume, firstBottle, secondBottle));
+            }
 
         } while (run);
     }
 
-    private static String bottleExercise(int targetVolume, int firstBottleCapacity, int secondBottleCapacity) {
+    private static List<String> bottleExercise(int targetVolume, int firstBottleCapacity, int secondBottleCapacity) {
         // create needed objects
         HashSet<Integer> visitedNodes = new HashSet<>();
         Queue<INode> children = new LinkedList<>();
@@ -48,6 +51,16 @@ public class Main {
         NodeHelper nodeHelper = new NodeHelper();
         List<Integer> path = nodeHelper.getPath(targetNode);
 
-        return String.format("The shortest path is %d steps. The steps are: %s", 5, "3");
+        int numberOfSteps = path.size() - 1;
+
+
+        List<String> message = new LinkedList<>();
+        message.add(String.format("The shortest path has %d number of steps. ", numberOfSteps));
+        message.add(String.format("The steps are: \n"));
+        for (Integer p : path) {
+            message.add(String.format("%d\n", p));
+        }
+
+        return message;
     }
 }

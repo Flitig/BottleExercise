@@ -16,8 +16,7 @@ public class NodeHelper {
     Integer getParentPath(INode targetNode, List<Integer> path) {
         if (targetNode.getParent() == null) {
             return targetNode.getId();
-        }
-        else {
+        } else {
             path.add(getParentPath(targetNode.getParent(), path));
         }
         return targetNode.getId();
