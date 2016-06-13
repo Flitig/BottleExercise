@@ -11,6 +11,9 @@ public class Bottle implements IBottle {
         this.maxCapacity = maxCapacity;
         this.currentVolume = currentVolume;
     }
+    public Bottle(int maxCapacity){
+        this(maxCapacity, 0);
+    }
 
     @Override
     public int getCurrentVolume() {

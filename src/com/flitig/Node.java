@@ -37,11 +37,16 @@ public class Node implements INode{
 
     @Override
     public INode copy() {
-        return null;
+        return new Node(firstBottle.copy(), secondBottle.copy(), this.parent);
     }
 
     @Override
     public IBottle[] getBottles() {
         return new IBottle[]{firstBottle, secondBottle};
+    }
+
+    @Override
+    public int getId() {
+        return firstBottle.getCurrentVolume()*10+secondBottle.getCurrentVolume();
     }
 }

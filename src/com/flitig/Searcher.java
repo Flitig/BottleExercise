@@ -57,21 +57,21 @@ public class Searcher implements ISearcher {
         if (!visitedNodes.contains(child)) childQueue.add(child.copy());
 
         child = new Node(Empty(node.getFirstBottle()), node.getSecondBottle(), root);
-        if (visitedNodes.contains(child)) childQueue.add(child.copy());
+        if (!visitedNodes.contains(child)) childQueue.add(child.copy());
 
         bottles = Pour(node.getFirstBottle(), node.getSecondBottle());
         child = new Node(bottles.get(0), bottles.get(1), root);
-        if (visitedNodes.contains(child)) childQueue.add(child.copy());
+        if (!visitedNodes.contains(child)) childQueue.add(child.copy());
 
         child = new Node(node.getFirstBottle(), Fill(node.getSecondBottle()), root);
         if (!visitedNodes.contains(child)) childQueue.add(child.copy());
 
         child = new Node(node.getFirstBottle(), Empty(node.getSecondBottle()), root);
-        if (visitedNodes.contains(child)) childQueue.add(child.copy());
+        if (!visitedNodes.contains(child)) childQueue.add(child.copy());
 
         bottles = Pour(node.getSecondBottle(), node.getFirstBottle());
         child = new Node(bottles.get(1), bottles.get(0), root);
-        if (visitedNodes.contains(child)) childQueue.add(child.copy());
+        if (!visitedNodes.contains(child)) childQueue.add(child.copy());
 
         return childQueue;
 

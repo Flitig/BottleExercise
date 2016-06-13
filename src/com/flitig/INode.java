@@ -14,4 +14,6 @@ public interface INode {
     INode copy();
 
     IBottle[] getBottles();
+
+    int getId();
 }
