@@ -1,8 +1,6 @@
 package com.flitig;
 
-import java.io.InputStreamReader;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.lang.System.exit;
 
@@ -31,13 +29,25 @@ public class Main {
             }
 
 
-            input = new int[]{targetVolume, firstBottle, secondBottle};
-            System.out.println(BottleExercise(input));
+            System.out.println(bottleExercise(targetVolume, firstBottle, secondBottle));
 
         } while (run);
     }
 
-    private static String BottleExercise(int[] args) {
-        return String.format(Integer.toString(args[0]));
+    private static String bottleExercise(int targetVolume, int firstBottleCapacity, int secondBottleCapacity) {
+        // create needed objects
+        HashSet<INode> visitedNodes = new HashSet<>();
+        Queue<INode> children = new LinkedList<>();
+        Stack<INode> currentPath = new Stack<>();
+
+        IBottle firstBottle = new Bottle(firstBottleCapacity, 0);
+        IBottle secondBottle = new Bottle(secondBottleCapacity, 0);
+
+        INode root = new Node(firstBottle, secondBottle);
+
+        ISearcher searcher = new Searcher(visitedNodes, children, currentPath);
+        INode targetNode = searcher.search(root, targetVolume);
+
+        return String.format(Integer.toString(targetVolume));
     }
 }
