@@ -45,9 +45,11 @@ public class Main {
 
         INode root = new Node(firstBottle, secondBottle);
 
-        ISearcher searcher = new Searcher(visitedNodes, children, currentPath);
-        INode targetNode = searcher.search(root, targetVolume);
+        ISearcher searcher = new Searcher();
+        INode targetNode = searcher.search(root, targetVolume, visitedNodes, children);
 
-        return String.format(Integer.toString(targetVolume));
+
+
+        return String.format("The shortest path is %d steps. The steps are: %s", 5, "3" );
     }
 }

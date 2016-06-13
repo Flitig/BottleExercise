@@ -9,4 +9,8 @@ public interface IBottle {
     void setCurrentVolume(int currentVolume);
 
     int getMaxCapacity();
+
+    IBottle copy();
+
+    int getFreeCapacity();
 }

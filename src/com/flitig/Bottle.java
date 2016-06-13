@@ -26,4 +26,14 @@ public class Bottle implements IBottle {
     public int getMaxCapacity() {
         return maxCapacity;
     }
+
+    @Override
+    public IBottle copy() {
+        return new Bottle(maxCapacity, currentVolume);
+    }
+
+    @Override
+    public int getFreeCapacity() {
+        return maxCapacity-currentVolume;
+    }
 }

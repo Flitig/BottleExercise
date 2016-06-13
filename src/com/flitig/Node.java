@@ -7,18 +7,41 @@ public class Node implements INode{
 
     private final IBottle firstBottle;
     private final IBottle secondBottle;
+    private final INode parent;
 
-    public Node(IBottle firstBottle, IBottle secondBottle) {
+    public Node(IBottle firstBottle, IBottle secondBottle, INode parent) {
 
         this.firstBottle = firstBottle;
         this.secondBottle = secondBottle;
+        this.parent = parent;
     }
 
+    public Node(IBottle firstBottle, IBottle secondBottle) {
+        this(firstBottle, secondBottle, null);
+    }
+
+    @Override
     public IBottle getFirstBottle() {
         return firstBottle;
     }
 
+    @Override
     public IBottle getSecondBottle() {
         return secondBottle;
+    }
+
+    @Override
+    public boolean hasTargetVolume(int targetVolume) {
+        return false;
+    }
+
+    @Override
+    public INode copy() {
+        return null;
+    }
+
+    @Override
+    public IBottle[] getBottles() {
+        return new IBottle[]{firstBottle, secondBottle};
     }
 }

@@ -5,4 +5,13 @@ package com.flitig;
  */
 public interface INode {
 
+    IBottle getFirstBottle();
+
+    IBottle getSecondBottle();
+
+    boolean hasTargetVolume(int targetVolume);
+
+    INode copy();
+
+    IBottle[] getBottles();
 }
