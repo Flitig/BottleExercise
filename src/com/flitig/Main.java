@@ -1,10 +1,11 @@
 package com.flitig;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.lang.System.exit;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) {
         boolean run = false;
@@ -12,25 +13,18 @@ public class Main {
         int firstBottle = 0;
         int secondBottle = 0;
 
-        int[] input;
         do {
             System.out.println("Please provide three integers: target volume and the capacity of two bottles. Example: 1 5 3 \nInput anything else to quit.");
-            Scanner sc = new Scanner(System.in);
 
-            try {
+            try (Scanner sc = new Scanner(System.in)) {
                 targetVolume = sc.nextInt();
                 firstBottle = sc.nextInt();
                 secondBottle = sc.nextInt();
             } catch (InputMismatchException e) {
                 exit(0);
-            } finally {
-                sc.close();
             }
 
-            for (String be : bottleExercise(targetVolume, firstBottle, secondBottle)) {
-                System.out.println(be);
-
-            }
+            bottleExercise(targetVolume, firstBottle, secondBottle).forEach(System.out::println);
 
         } while (run);
     }
@@ -56,10 +50,8 @@ public class Main {
 
         List<String> message = new LinkedList<>();
         message.add(String.format("The shortest path has %d number of steps. ", numberOfSteps));
-        message.add(String.format("The steps are: \n"));
-        for (Integer p : path) {
-            message.add(String.format("%d\n", p));
-        }
+        message.add("The steps are: \n");
+        message.addAll(path.stream().map(p -> String.format("%d\n", p)).collect(Collectors.toList()));
 
         return message;
     }

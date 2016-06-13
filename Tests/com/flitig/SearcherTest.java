@@ -18,7 +18,7 @@ public class SearcherTest {
         Queue<INode> actual = new LinkedList<>();
 
         Searcher s = new Searcher();
-        actual = s.generateChildren(root, new HashSet<Integer>(), actual);
+        actual = s.generateChildren(root, new HashSet<>(), actual);
 
         /*Queue<INode> expected = new LinkedList<>();
         expected.add(new NodeMock(3, 3, 5, 1)); // fill first
@@ -41,14 +41,14 @@ public class SearcherTest {
     @Test
     public void bfsTest1() throws Exception {
         INode root = new Node(new Bottle(3, 0), new Bottle(5, 0), null);
-        Queue children = new LinkedList<>();
+        Queue<INode> children = new LinkedList<>();
 
         INode actual;
 
         int target = 1;
 
         Searcher s = new Searcher();
-        actual = s.bfs(target, root, new HashSet<Integer>(), children);
+        actual = s.bfs(target, root, new HashSet<>(), children);
 
         assertTrue(actual.getId().equals(15));
         assertTrue(actual.getParent().getId().equals(33));
@@ -61,14 +61,14 @@ public class SearcherTest {
     @Test
     public void bfsTest4() throws Exception {
         INode root = new Node(new Bottle(3, 0), new Bottle(5, 0), null);
-        Queue children = new LinkedList<>();
+        Queue<INode> children = new LinkedList<>();
 
         INode actual;
 
         int target = 4;
 
         Searcher s = new Searcher();
-        actual = s.bfs(target, root, new HashSet<Integer>(), children);
+        actual = s.bfs(target, root, new HashSet<>(), children);
 
         assertTrue(actual.getId().equals(34));
         assertTrue(actual.getParent().getId().equals(25));
@@ -84,14 +84,14 @@ public class SearcherTest {
     @Test
     public void searchTest1() throws Exception {
         INode root = new Node(new Bottle(3, 0), new Bottle(5, 0), null);
-        Queue children = new LinkedList<>();
+        Queue<INode> children = new LinkedList<>();
 
         INode actual;
 
         int target = 1;
 
         Searcher s = new Searcher();
-        actual = s.search(root, target, new HashSet<Integer>(), children);
+        actual = s.search(root, target, new HashSet<>(), children);
 
         assertTrue(actual.getId().equals(15));
         assertTrue(actual.getParent().getId().equals(33));
@@ -104,14 +104,14 @@ public class SearcherTest {
     @Test
     public void searchTest4() throws Exception {
         INode root = new Node(new Bottle(3, 0), new Bottle(5, 0), null);
-        Queue children = new LinkedList<>();
+        Queue<INode> children = new LinkedList<>();
 
         INode actual;
 
         int target = 4;
 
         Searcher s = new Searcher();
-        actual = s.search(root, target, new HashSet<Integer>(), children);
+        actual = s.search(root, target, new HashSet<>(), children);
 
         assertTrue(actual.getId().equals(34));
         assertTrue(actual.getParent().getId().equals(25));
