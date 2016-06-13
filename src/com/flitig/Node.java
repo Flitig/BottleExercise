@@ -9,6 +9,7 @@ public class Node implements INode {
     private final IBottle secondBottle;
     private final INode parent;
     private final Integer Id;
+
     public Node(IBottle firstBottle, IBottle secondBottle, INode parent) {
 
         this.firstBottle = firstBottle;

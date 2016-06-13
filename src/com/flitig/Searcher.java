@@ -16,14 +16,9 @@ public class Searcher implements ISearcher {
         if (root.getFirstBottle() == root.getSecondBottle()) {
             return null;
         }
-        children.add(root);
-        while (!children.isEmpty()) {
-            if (root.hasTargetVolume(targetVolume)) return root;
-            else {
-                return bfs(targetVolume, root, visitedNodes, children);
-            }
+        else {
+            return bfs(targetVolume, root, visitedNodes, children);
         }
-        return root;
     }
 
     INode bfs(int targetVolume, INode root, HashSet<Integer> visitedNodes, Queue<INode> children) {

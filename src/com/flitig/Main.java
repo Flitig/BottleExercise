@@ -1,5 +1,4 @@
 package com.flitig;
-
 import java.util.*;
 
 import static java.lang.System.exit;
@@ -37,7 +36,6 @@ public class Main {
         // create needed objects
         HashSet<Integer> visitedNodes = new HashSet<>();
         Queue<INode> children = new LinkedList<>();
-        Stack<INode> currentPath = new Stack<>();
 
         IBottle firstBottle = new Bottle(firstBottleCapacity, 0);
         IBottle secondBottle = new Bottle(secondBottleCapacity, 0);
@@ -47,6 +45,8 @@ public class Main {
         ISearcher searcher = new Searcher();
         INode targetNode = searcher.search(root, targetVolume, visitedNodes, children);
 
+        NodeHelper nodeHelper = new NodeHelper();
+        List<Integer> path = nodeHelper.getPath(targetNode);
 
         return String.format("The shortest path is %d steps. The steps are: %s", 5, "3");
     }
