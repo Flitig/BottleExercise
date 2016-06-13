@@ -5,6 +5,8 @@ package com.flitig;
  */
 public interface INode {
 
+    INode getParent();
+
     IBottle getFirstBottle();
 
     IBottle getSecondBottle();
@@ -13,7 +15,5 @@ public interface INode {
 
     INode copy();
 
-    IBottle[] getBottles();
-
-    int getId();
+    Integer getId();
 }

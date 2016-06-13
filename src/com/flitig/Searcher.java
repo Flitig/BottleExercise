@@ -1,10 +1,8 @@
 package com.flitig;
 
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.stream.Collectors;
 
 /**
  * Created by Flitig on 2016-06-13.
@@ -14,7 +12,7 @@ public class Searcher implements ISearcher {
     }
 
     @Override
-    public INode search(INode root, int targetVolume, HashSet<INode> visitedNodes, Queue<INode> children) {
+    public INode search(INode root, int targetVolume, HashSet<Integer> visitedNodes, Queue<INode> children) {
         if (root.getFirstBottle() == root.getSecondBottle()) {
             return null;
         }
@@ -28,52 +26,58 @@ public class Searcher implements ISearcher {
         return root;
     }
 
-    INode bfs(int targetVolume, INode root, HashSet<INode> visitedNodes, Queue<INode> children) {
+    INode bfs(int targetVolume, INode root, HashSet<Integer> visitedNodes, Queue<INode> children) {
         INode node;
         children.add(root);
-        while (!children.isEmpty()) {
+        visitedNodes.add(root.getId());
+        do {
             node = children.remove();
             if (node.hasTargetVolume(targetVolume)) {
-                return root;
+                return node;
 
             } else {
-                children = generateChildren(root, visitedNodes, children);
-                visitedNodes.add(root);
+                generateChildren(node, visitedNodes, children);
             }
-        }
+        } while (!children.isEmpty());
         return null;
     }
 
 
-    Queue<INode> generateChildren(INode root, HashSet<INode> visitedNodes, Queue<INode> children) {
+    Queue<INode> generateChildren(INode root, HashSet<Integer> visitedNodes, Queue<INode> children) {
         // only implemented for use of two bottles at this time
 
-        INode node = root.copy();
         INode child;
         List<IBottle> bottles;
-        Queue<INode> childQueue = children.stream().collect(Collectors.toCollection(LinkedList<INode>::new));
 
-        child = new Node(Fill(node.getFirstBottle()), node.getSecondBottle(), root);
-        if (!visitedNodes.contains(child)) childQueue.add(child.copy());
+        child = new Node(Fill(root.getFirstBottle()), root.getSecondBottle(), root);
+        add(child, visitedNodes, children);
 
-        child = new Node(Empty(node.getFirstBottle()), node.getSecondBottle(), root);
-        if (!visitedNodes.contains(child)) childQueue.add(child.copy());
+        child = new Node(Empty(root.getFirstBottle()), root.getSecondBottle(), root);
+        add(child, visitedNodes, children);
 
-        bottles = Pour(node.getFirstBottle(), node.getSecondBottle());
+        bottles = Pour(root.getFirstBottle(), root.getSecondBottle());
         child = new Node(bottles.get(0), bottles.get(1), root);
-        if (!visitedNodes.contains(child)) childQueue.add(child.copy());
+        add(child, visitedNodes, children);
 
-        child = new Node(node.getFirstBottle(), Fill(node.getSecondBottle()), root);
-        if (!visitedNodes.contains(child)) childQueue.add(child.copy());
+        child = new Node(root.getFirstBottle(), Fill(root.getSecondBottle()), root);
+        add(child, visitedNodes, children);
 
-        child = new Node(node.getFirstBottle(), Empty(node.getSecondBottle()), root);
-        if (!visitedNodes.contains(child)) childQueue.add(child.copy());
+        child = new Node(root.getFirstBottle(), Empty(root.getSecondBottle()), root);
+        add(child, visitedNodes, children);
 
-        bottles = Pour(node.getSecondBottle(), node.getFirstBottle());
+        bottles = Pour(root.getSecondBottle(), root.getFirstBottle());
         child = new Node(bottles.get(1), bottles.get(0), root);
-        if (!visitedNodes.contains(child)) childQueue.add(child.copy());
+        add(child, visitedNodes, children);
 
-        return childQueue;
+        return children;
+
+    }
+
+    private void add(INode child, HashSet<Integer> visitedNodes, Queue<INode> childQueue) {
+        if (!visitedNodes.contains(child.getId())) {
+            childQueue.add(child.copy());
+            visitedNodes.add(child.getId());
+        }
 
     }
 

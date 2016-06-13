@@ -11,7 +11,8 @@ public class Bottle implements IBottle {
         this.maxCapacity = maxCapacity;
         this.currentVolume = currentVolume;
     }
-    public Bottle(int maxCapacity){
+
+    public Bottle(int maxCapacity) {
         this(maxCapacity, 0);
     }
 
@@ -37,6 +38,6 @@ public class Bottle implements IBottle {
 
     @Override
     public int getFreeCapacity() {
-        return maxCapacity-currentVolume;
+        return maxCapacity - currentVolume;
     }
 }

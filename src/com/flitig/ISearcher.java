@@ -8,5 +8,5 @@ import java.util.Queue;
  */
 public interface ISearcher {
 
-    INode search(INode root, int targetVolume, HashSet<INode> visitedNodes, Queue<INode> children);
+    INode search(INode root, int targetVolume, HashSet<Integer> visitedNodes, Queue<INode> children);
 }

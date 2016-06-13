@@ -23,8 +23,7 @@ public class Main {
                 secondBottle = sc.nextInt();
             } catch (InputMismatchException e) {
                 exit(0);
-            }
-            finally {
+            } finally {
                 sc.close();
             }
 
@@ -36,7 +35,7 @@ public class Main {
 
     private static String bottleExercise(int targetVolume, int firstBottleCapacity, int secondBottleCapacity) {
         // create needed objects
-        HashSet<INode> visitedNodes = new HashSet<>();
+        HashSet<Integer> visitedNodes = new HashSet<>();
         Queue<INode> children = new LinkedList<>();
         Stack<INode> currentPath = new Stack<>();
 
@@ -49,7 +48,6 @@ public class Main {
         INode targetNode = searcher.search(root, targetVolume, visitedNodes, children);
 
 
-
-        return String.format("The shortest path is %d steps. The steps are: %s", 5, "3" );
+        return String.format("The shortest path is %d steps. The steps are: %s", 5, "3");
     }
 }
