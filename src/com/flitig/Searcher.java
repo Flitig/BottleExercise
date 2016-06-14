@@ -12,6 +12,11 @@ public class Searcher implements ISearcher {
     }
 
     /**
+     * Traverses a graph starting with a root node that has to bottle objects and a null-parent.
+     * Constructs a tree using breadth first search algoritm - to calculate the shortest path in the graph, from the
+     * provided node to one of the nodes meeting the criteria. The criteria being that at least one of the two
+     * bottles in a node should contain the target volume.
+     * The data structures needed by the algorithm is injected as parameters.
      *
      * @param root
      * @param targetVolume
