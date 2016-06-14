@@ -11,6 +11,14 @@ public class Searcher implements ISearcher {
     public Searcher() {
     }
 
+    /**
+     *
+     * @param root
+     * @param targetVolume
+     * @param visitedNodes
+     * @param children
+     * @return
+     */
     @Override
     public INode search(INode root, int targetVolume, HashSet<Integer> visitedNodes, Queue<INode> children) {
         if (root.getFirstBottle() == root.getSecondBottle()) {
@@ -20,6 +28,14 @@ public class Searcher implements ISearcher {
         }
     }
 
+    /**
+     *
+     * @param targetVolume
+     * @param root
+     * @param visitedNodes
+     * @param children
+     * @return
+     */
     INode bfs(int targetVolume, INode root, HashSet<Integer> visitedNodes, Queue<INode> children) {
         INode node;
         children.add(root);
@@ -36,7 +52,13 @@ public class Searcher implements ISearcher {
         return null;
     }
 
-
+    /**
+     *
+     * @param root
+     * @param visitedNodes
+     * @param children
+     * @return
+     */
     Queue<INode> generateChildren(INode root, HashSet<Integer> visitedNodes, Queue<INode> children) {
         // only implemented for use of two bottles at this time
 
@@ -67,6 +89,12 @@ public class Searcher implements ISearcher {
 
     }
 
+    /**
+     *
+     * @param child
+     * @param visitedNodes
+     * @param childQueue
+     */
     private void add(INode child, HashSet<Integer> visitedNodes, Queue<INode> childQueue) {
         if (!visitedNodes.contains(child.getId())) {
             childQueue.add(child.copy());

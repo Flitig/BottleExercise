@@ -9,6 +9,12 @@ import java.util.List;
 public enum BottleHelper {
     SINGLETON;
 
+    /**
+     *
+     * @param from
+     * @param into
+     * @return
+     */
     public List<IBottle> PourInto(IBottle from, IBottle into) {
         int fromBefore = from.getCurrentVolume();
         int intoBefore = into.getCurrentVolume();
@@ -26,11 +32,21 @@ public enum BottleHelper {
         return bottlesList;
     }
 
+    /**
+     *
+     * @param b
+     * @return
+     */
     public IBottle EmptyBottle(IBottle b) {
         b.setCurrentVolume(0);
         return b;
     }
 
+    /**
+     *
+     * @param b
+     * @return
+     */
     public IBottle FillBottle(IBottle b) {
         b.setCurrentVolume(b.getMaxCapacity());
         return b;
