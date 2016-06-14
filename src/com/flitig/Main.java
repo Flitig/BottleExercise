@@ -13,6 +13,7 @@ class Main {
         int firstBottle = 0;
         int secondBottle = 0;
 
+        // get input and extract data
         do {
             System.out.println("Please provide three integers: target volume and the capacity of two bottles. Example: 1 5 3 \nInput anything else to quit.");
 
@@ -30,6 +31,7 @@ class Main {
     }
 
     private static List<String> bottleExercise(int targetVolume, int firstBottleCapacity, int secondBottleCapacity) {
+
         // create needed objects
         HashSet<Integer> visitedNodes = new HashSet<>();
         Queue<INode> children = new LinkedList<>();
@@ -38,11 +40,13 @@ class Main {
         IBottle secondBottle = new Bottle(secondBottleCapacity, 0);
 
         INode root = new Node(firstBottle, secondBottle);
+        NodeHelper nodeHelper = new NodeHelper(); // this will extract the steps needed for solution
 
         ISearcher searcher = new Searcher();
+
+        // perform search which generates a linked list of nodes visited in the shortest solution
         INode targetNode = searcher.search(root, targetVolume, visitedNodes, children);
 
-        NodeHelper nodeHelper = new NodeHelper();
         List<Integer> path = nodeHelper.getPath(targetNode);
 
         int numberOfSteps = path.size() - 1;
