@@ -26,7 +26,7 @@ public class Searcher implements ISearcher {
      */
     @Override
     public INode search(INode root, int targetVolume, HashSet<Integer> visitedNodes, Queue<INode> children) throws NoPossiblePathException {
-        if (root.getFirstBottle() == root.getSecondBottle()) {
+        if (root.getFirstItem() == root.getSecondItem()) {
             throw new NoPossiblePathException();
         } else {
             return bfs(targetVolume, root, visitedNodes, children);
@@ -47,7 +47,7 @@ public class Searcher implements ISearcher {
         visitedNodes.add(root.getId());
         do {
             node = children.remove();
-            if (node.hasTargetVolume(targetVolume)) {
+            if (node.hasTargetValue(targetVolume)) {
                 return node;
 
             } else {
@@ -70,23 +70,23 @@ public class Searcher implements ISearcher {
         INode child;
         List<IBottle> bottles;
 
-        child = new Node(Fill(root.getFirstBottle()), root.getSecondBottle(), root);
+        child = new Node(Fill(root.getFirstItem()), root.getSecondItem(), root);
         add(child, visitedNodes, children);
 
-        child = new Node(Empty(root.getFirstBottle()), root.getSecondBottle(), root);
+        child = new Node(Empty(root.getFirstItem()), root.getSecondItem(), root);
         add(child, visitedNodes, children);
 
-        bottles = Pour(root.getFirstBottle(), root.getSecondBottle());
+        bottles = Pour(root.getFirstItem(), root.getSecondItem());
         child = new Node(bottles.get(0), bottles.get(1), root);
         add(child, visitedNodes, children);
 
-        child = new Node(root.getFirstBottle(), Fill(root.getSecondBottle()), root);
+        child = new Node(root.getFirstItem(), Fill(root.getSecondItem()), root);
         add(child, visitedNodes, children);
 
-        child = new Node(root.getFirstBottle(), Empty(root.getSecondBottle()), root);
+        child = new Node(root.getFirstItem(), Empty(root.getSecondItem()), root);
         add(child, visitedNodes, children);
 
-        bottles = Pour(root.getSecondBottle(), root.getFirstBottle());
+        bottles = Pour(root.getSecondItem(), root.getFirstItem());
         child = new Node(bottles.get(1), bottles.get(0), root);
         add(child, visitedNodes, children);
 

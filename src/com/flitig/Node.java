@@ -28,17 +28,17 @@ public class Node implements INode {
     }
 
     @Override
-    public IBottle getFirstBottle() {
+    public IBottle getFirstItem() {
         return firstBottle;
     }
 
     @Override
-    public IBottle getSecondBottle() {
+    public IBottle getSecondItem() {
         return secondBottle;
     }
 
     @Override
-    public boolean hasTargetVolume(int targetVolume) {
+    public boolean hasTargetValue(int targetVolume) {
         return (firstBottle.getCurrentVolume() == targetVolume || secondBottle.getCurrentVolume() == targetVolume);
     }
 

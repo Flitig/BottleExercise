@@ -7,11 +7,11 @@ public interface INode {
 
     INode getParent();
 
-    IBottle getFirstBottle();
+    IBottle getFirstItem();
 
-    IBottle getSecondBottle();
+    IBottle getSecondItem();
 
-    boolean hasTargetVolume(int targetVolume);
+    boolean hasTargetValue(int targetVolume);
 
     INode copy();
 
