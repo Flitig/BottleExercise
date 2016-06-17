@@ -123,4 +123,27 @@ public class SearcherTest {
 
     }
 
+    @Test
+    public void generateChildrenTestTwoEvenVolumes() throws Exception {
+        INode root = new Node(new Bottle(6, 0), new Bottle(4, 0), null);
+        Queue<INode> actual = new LinkedList<>();
+
+        Searcher s = new Searcher();
+        actual = s.generateChildren(root, new HashSet<>(), actual);
+
+        /*Queue<INode> expected = new LinkedList<>();
+        expected.add(new NodeMock(6, 6, 4, 0)); // fill first
+        expected.add(new NodeMock(6, 0, 4, 0)); // empty first
+        expected.add(new NodeMock(6, 0, 4, 0)); // pour first into second
+        expected.add(new NodeMock(6, 0, 4, 4)); // fill second
+        expected.add(new NodeMock(6, 0, 4, 0)); // empty second
+        expected.add(new NodeMock(6, 0, 4, 0)); // pour second into first
+*/
+        assertTrue(actual.remove().getId().equals(60));
+        assertTrue(actual.remove().getId().equals(0));
+        assertTrue(actual.remove().getId().equals(4));
+
+
+    }
+
 }

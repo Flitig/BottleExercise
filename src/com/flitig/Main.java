@@ -48,8 +48,15 @@ class Main {
         INode targetNode = null;
         try {
             targetNode = searcher.search(root, targetVolume, visitedNodes, children);
-        } catch (NoPossiblePathException e) {
-            e.printStackTrace();
+        } catch (NoPossiblePathException nppe) {
+            nppe.printStackTrace();
+            System.out.println("No possible path found");
+            exit(0);
+        }
+        catch (NullPointerException npe){
+            npe.printStackTrace();
+            System.out.println("Null pointer");
+            exit(0);
         }
 
         List<Integer> path = nodeHelper.getPath(targetNode);
