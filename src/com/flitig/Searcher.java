@@ -25,9 +25,9 @@ public class Searcher implements ISearcher {
      * @return
      */
     @Override
-    public INode search(INode root, int targetVolume, HashSet<Integer> visitedNodes, Queue<INode> children) {
+    public INode search(INode root, int targetVolume, HashSet<Integer> visitedNodes, Queue<INode> children) throws NoPossiblePathException {
         if (root.getFirstBottle() == root.getSecondBottle()) {
-            return null;
+            throw new NoPossiblePathException();
         } else {
             return bfs(targetVolume, root, visitedNodes, children);
         }

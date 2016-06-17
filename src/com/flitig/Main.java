@@ -45,7 +45,12 @@ class Main {
         ISearcher searcher = new Searcher();
 
         // perform search which generates a linked list of nodes visited in the shortest solution
-        INode targetNode = searcher.search(root, targetVolume, visitedNodes, children);
+        INode targetNode = null;
+        try {
+            targetNode = searcher.search(root, targetVolume, visitedNodes, children);
+        } catch (NoPossiblePathException e) {
+            e.printStackTrace();
+        }
 
         List<Integer> path = nodeHelper.getPath(targetNode);
 

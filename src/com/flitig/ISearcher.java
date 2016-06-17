@@ -8,5 +8,5 @@ import java.util.Queue;
  */
 interface ISearcher {
 
-    INode search(INode root, int targetVolume, HashSet<Integer> visitedNodes, Queue<INode> children);
+    INode search(INode root, int targetVolume, HashSet<Integer> visitedNodes, Queue<INode> children) throws NoPossiblePathException;
 }
