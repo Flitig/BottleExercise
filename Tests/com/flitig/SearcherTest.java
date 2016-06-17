@@ -146,25 +146,15 @@ public class SearcherTest {
 
     }
 
-    @Test
+    @Test(expected = NoPossiblePathException.class)
     public void searchTestFailsWithTwoEvenVolumesAndTargetUneven() throws Exception {
         INode root = new Node(new Bottle(4, 0), new Bottle(6, 0), null);
         Queue<INode> children = new LinkedList<>();
-
-        INode actual;
-
         int target = 1;
 
         Searcher s = new Searcher();
-        actual = s.search(root, target, new HashSet<>(), children);
+        s.search(root, target, new HashSet<>(), children);
 
-        //assertTrue(actual.getId().equals(34));
-        //assertTrue(actual.getParent().getId().equals(25));
-        //assertTrue(actual.getParent().getParent().getId().equals(20));
-        //assertTrue(actual.getParent().getParent().getParent().getId().equals(2));
-        //assertTrue(actual.getParent().getParent().getParent().getParent().getId().equals(32));
-        //assertTrue(actual.getParent().getParent().getParent().getParent().getParent().getId().equals(5));
-        //assertTrue(actual.getParent().getParent().getParent().getParent().getParent().getParent().getId().equals(0));
 
     }
 
