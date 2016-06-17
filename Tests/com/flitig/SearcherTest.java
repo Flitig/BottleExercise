@@ -35,7 +35,6 @@ public class SearcherTest {
         assertTrue(actual.remove().getId().equals(10));
         assertTrue(actual.remove().getId().equals(20));
 
-
     }
 
     @Test
@@ -143,7 +142,6 @@ public class SearcherTest {
         assertTrue(actual.remove().getId().equals(0));
         assertTrue(actual.remove().getId().equals(4));
 
-
     }
 
     @Test(expected = NoPossiblePathException.class)
@@ -159,6 +157,16 @@ public class SearcherTest {
     @Test(expected = NoPossiblePathException.class)
     public void searchTestFailsWithTwoEqualVolumes() throws Exception {
         INode root = new Node(new Bottle(4, 0), new Bottle(4, 0), null);
+        Queue<INode> children = new LinkedList<>();
+        int target = 1;
+
+        Searcher s = new Searcher();
+        s.search(root, target, new HashSet<>(), children);
+    }
+
+    @Test(expected = NoPossiblePathException.class)
+    public void searchTestFailsWithNegativeVolume() throws Exception {
+        INode root = new Node(new Bottle(-4, 0), new Bottle(4, 0), null);
         Queue<INode> children = new LinkedList<>();
         int target = 1;
 
