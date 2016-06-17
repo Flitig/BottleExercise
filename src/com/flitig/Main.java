@@ -49,8 +49,7 @@ class Main {
         try {
             targetNode = searcher.search(root, targetVolume, visitedNodes, children);
         } catch (NoPossiblePathException nppe) {
-            nppe.printStackTrace();
-            System.out.println("No possible path found");
+            System.out.println("No possible path found to target volume with bottle configuration.");
             exit(0);
         }
         catch (NullPointerException npe){
