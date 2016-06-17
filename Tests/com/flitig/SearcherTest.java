@@ -174,4 +174,14 @@ public class SearcherTest {
         s.search(root, target, new HashSet<>(), children);
     }
 
+    @Test(expected = NoPossiblePathException.class)
+    public void searchTestFailsWithNegativeTarget() throws Exception {
+        INode root = new Node(new Bottle(5, 0), new Bottle(3, 0), null);
+        Queue<INode> children = new LinkedList<>();
+        int target = -4;
+
+        Searcher s = new Searcher();
+        s.search(root, target, new HashSet<>(), children);
+    }
+
 }
