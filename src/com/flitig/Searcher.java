@@ -41,7 +41,7 @@ public class Searcher implements ISearcher {
      * @param children
      * @return
      */
-    INode bfs(int targetVolume, INode root, HashSet<Integer> visitedNodes, Queue<INode> children) {
+    INode bfs(int targetVolume, INode root, HashSet<Integer> visitedNodes, Queue<INode> children) throws NoPossiblePathException {
         INode node;
         children.add(root);
         visitedNodes.add(root.getId());
@@ -54,7 +54,7 @@ public class Searcher implements ISearcher {
                 generateChildren(node, visitedNodes, children);
             }
         } while (!children.isEmpty());
-        return null;
+        throw new NoPossiblePathException();
     }
 
     /**
