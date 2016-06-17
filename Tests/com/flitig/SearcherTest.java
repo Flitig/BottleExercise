@@ -154,8 +154,16 @@ public class SearcherTest {
 
         Searcher s = new Searcher();
         s.search(root, target, new HashSet<>(), children);
+    }
 
+    @Test(expected = NoPossiblePathException.class)
+    public void searchTestFailsWithTwoEqualVolumes() throws Exception {
+        INode root = new Node(new Bottle(4, 0), new Bottle(4, 0), null);
+        Queue<INode> children = new LinkedList<>();
+        int target = 1;
 
+        Searcher s = new Searcher();
+        s.search(root, target, new HashSet<>(), children);
     }
 
 }
