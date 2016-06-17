@@ -153,7 +153,7 @@ public class SearcherTest {
 
         INode actual;
 
-        int target = 4;
+        int target = 1;
 
         Searcher s = new Searcher();
         actual = s.search(root, target, new HashSet<>(), children);
